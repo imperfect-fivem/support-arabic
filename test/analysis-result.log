@@ -1,0 +1,23 @@
+With Tags:
+(+) text: تحتاج إلى رزمة من الـCopper لإتمام العملية
+(~) reversed: <FONT FACE="Arabic">ـﻟﺍ ﻦﻣ ﺔﻣﺯﺭ ﻰﻟﺇ ﺝﺎﺘﺤﺗ</FONT>Copper <FONT FACE="Arabic">ﺔﻴﻠﻤﻌﻟﺍ ﻡﺎﻤﺗﻹ</FONT>
+(-) irreversed: تحتاج إلى رزمة من الـCopper لإتمام العملية
+(?) text = irreversed: true 
+
+Without Tags:
+(+) text: تحتاج إلى رزمة من الـCopper لإتمام العملية
+(~) reversed: ـﻟﺍ ﻦﻣ ﺔﻣﺯﺭ ﻰﻟﺇ ﺝﺎﺘﺤﺗCopper ﺔﻴﻠﻤﻌﻟﺍ ﻡﺎﻤﺗﻹ
+(-) irreversed: تحتاج إلى رزمة من الـCopper لإتمام العملية
+(?) text = irreversed: true 
+
+TODO: support the diacritics between Lam and Alef, e.g.
+(+) nonDiacritics: لِئَلا
+(+) diacritics: لِئَلَّا
+(~) reversedNonDiacritics: ﻻَﺋِﻟ
+(~) reversedDiacritics: ﻻَﺋِﻟ
+(-) irreversedNonDiacritics: لِئَلا
+(-) irreversedDiacritics: لِئَلا
+(?) irreversedNonDiacritics = nonDiacritics: true
+(?) irreversedDiacritics = irreversedNonDiacritics: true should be false
+(?) irreversedDiacritics = diacritics: false should be true
+(?) irreversedDiacritics = irreversedNonDiacritics: true should be false
