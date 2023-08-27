@@ -98,6 +98,6 @@ The only solution is to find a replacement solution to remove the current "crack
 
 ## TODO
 - Find a solution to the text direction.
-- Support the [diacritics](https://en.wikipedia.org/wiki/Arabic_diacritics) between `ل` and `ا` to [solve](https://github.com/imperfect-fivem/support-arabic/blob/c536a401e7de5301f335f67287694f6e6855c7b6/src/linking.lua#L131) cases like [this](https://github.com/imperfect-fivem/support-arabic/blob/c536a401e7de5301f335f67287694f6e6855c7b6/test/analysis-result.log#L13).
+- Support the [diacritics](https://en.wikipedia.org/wiki/Arabic_diacritics) between `ل` and `ا` to [solve](https://github.com/imperfect-fivem/support-arabic/blob/c536a401e7de5301f335f67287694f6e6855c7b6/src/linking.js#L131) cases like [this](https://github.com/imperfect-fivem/support-arabic/blob/c536a401e7de5301f335f67287694f6e6855c7b6/test/analysis-result.log#L13).
 - Test in [RedM](https://redm.net/).
 - Add use-case examples.
