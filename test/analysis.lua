@@ -55,6 +55,5 @@ addLogLine("(-) irreversedDiacritics:", irreversedDiacritics)
 addLogLine("(?) irreversedNonDiacritics = nonDiacritics:", irreversedNonDiacritics == nonDiacritics)
 addLogLine("(?) irreversedDiacritics = irreversedNonDiacritics:", irreversedDiacritics == irreversedNonDiacritics, "should be false") -- output: true
 addLogLine("(?) irreversedDiacritics = diacritics:", irreversedDiacritics == diacritics, "should be true") -- output: false
-addLogLine("(?) irreversedDiacritics = irreversedNonDiacritics:", irreversedDiacritics == irreversedNonDiacritics, "should be false") -- output: true
 
 SaveResourceFile(GetCurrentResourceName(), 'test/analysis-result.log', message, -1)

@@ -20,4 +20,3 @@ TODO: support the diacritics between Lam and Alef, e.g.
 (?) irreversedNonDiacritics = nonDiacritics: true
 (?) irreversedDiacritics = irreversedNonDiacritics: true should be false
 (?) irreversedDiacritics = diacritics: false should be true
-(?) irreversedDiacritics = irreversedNonDiacritics: true should be false
