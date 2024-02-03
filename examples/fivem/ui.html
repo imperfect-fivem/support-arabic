@@ -34,9 +34,11 @@
         font-size: 1.5em;
       }
 
-      #input input[type=text] {
+      #input textarea {
         outline: none;
-        padding: 0.25em;
+        resize: none;
+        overflow: hidden;
+        padding: 0.35em;
         margin: 0.15em 0;
         border-radius: 0.5em;
         border: 0.25em solid white;
@@ -47,7 +49,6 @@
         width: 90%;
         font-size: 1.25em;
         height: 8em;
-        word-wrap: normal;
       }
 
       #notification label {
@@ -75,7 +76,7 @@
     <div>
       <div id="input" style="direction: rtl;">
         <span>أدخل النص:</span>
-        <input type="text">
+        <textarea></textarea>
         <div id="notification">
           <input type="checkbox" name="notification" checked/>
           <label for="notification">إشعار</label>
@@ -86,19 +87,19 @@
 
     <script>
       let input = document.getElementById('input');
-      let text = input.getElementsByTagName('input').item(0);
+      let textarea = input.getElementsByTagName('textarea').item(0);
       let notification = document.getElementById('notification').getElementsByTagName('input').item(0);
       let button = input.getElementsByTagName('button').item(0);
 
       window.addEventListener('message', function({ data }) {
-        text.value = "عربي أو Non-AR في الإتجاه";
+        textarea.value = "عربي أو Non-AR في الإتجاه";
         notification.checked = true;
         input.style.display = 'block';
       });
 
       button.onclick = () => {
         fetch('https://support-arabic/submit', { method: 'POST', body: JSON.stringify({
-          text: text.value,
+          text: textarea.value,
           sticky: !notification.checked
         })});
 
