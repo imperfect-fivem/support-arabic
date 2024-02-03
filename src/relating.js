@@ -32,7 +32,7 @@ function escapeContent(input, tags = !IsDuplicityVersion(), font = DEFAULT_FONT_
             let prefix = originalContent.substring(0, originalContent.indexOf(content.charAt(0)));
             let suffix = originalContent.substring(originalContent.lastIndexOf(content.charAt(content.length - 1)) + 1, originalContent.length);
             content = internalReverseLink(content);
-            if (tags) content = `<FONT FACE="${font}">${content}</FONT>`; // TODO: font face as argument
+            if (tags) content = `<FONT FACE="${font}">${content}</FONT>`;
             return prefix + content + suffix;
         }
     );
