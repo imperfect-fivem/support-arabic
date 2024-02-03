@@ -36,59 +36,31 @@ With this script you can link and reverse the Arabic sentences to be readable, N
 ![Linked Arabic](https://raw.githubusercontent.com/imperfect-fivem/support-arabic/85096cd1b45bc54d9a190a86cdf4f2bcb8921a65/images/linked-arabic.png)  
 _Note:_ it's obvious but anyway, this problem is with [RAGE](https://en.wikipedia.org/wiki/Rockstar_Advanced_Game_Engine) so there no need to use it with UI that involves HTML which supports Arabic.
 
+## Does that work in all cases ?
+There is another problem. It happens when it comes to what I like to call a "hybrid string".  
+A hybrid string is basically an array of characters, some of them are Arabic while some others are not.  
+Is that even an issue ? YES. Why is it an issue ? To answer that let's see a life example.  
+A sentence (Arabic or Non-AR in direction) that [player will be notified with](https://github.com/imperfect-fivem/support-arabic/blob/65024cfcb705b68d311dd85c74ac71d6e48ce376/examples/fivem/client.lua):  
+![test-sentence](https://raw.githubusercontent.com/imperfect-fivem/support-arabic/65024cfcb705b68d311dd85c74ac71d6e48ce376/images/test-sentence.png)  
+First notification direction is LTR while the second one direction is RTL:  
+![direction-difference](https://raw.githubusercontent.com/imperfect-fivem/support-arabic/65024cfcb705b68d311dd85c74ac71d6e48ce376/images/direction-difference.png)  
+As you can see, the Arabic it self hasn't affected, but the order of the sentences has reversed.  
+This could be fixed by typing `سيرفر` instead of `Server` and so on... which is taking the English vocal and type the parallel to it in Arabic (it's not accepted linguistically but let's say it is), however, there are some cases that you are forced to put a Non-Arabic word in a random position in a string, for example, the player name which is not always written in Arabic.  
+To fix that the string shall be redirected to suit LTR text direction system, which [`SupportArabic:redirect`](TOFILL) function does.
+
 ## Functionality
 The script works with [exports](https://docs.fivem.net/docs/scripting-reference/runtimes/javascript/functions/exports/) so you can use it wherever you like.  
-The exported functions:  
-- `reverseLink`: raw linking & reversing.
-- `irreverseUnlink`: raw unlinking & irreversing.
-- `escape`: linking & reversing a hybrid string of Arabic and any other language (only link & reverse Arabic).
-- `parse`: unlinking & irreversing a hybrid string of Arabic and any other language (only unlink & irreverse the Arabic).
+Check the exported functions [here](TOFILL) if you want to use it in a specific way.  
+If you want to generally support Arabic in your resource, just add this line to its manifest:  
+```lua
+client_script '@support-arabic/escaping.lua'
+```
+_Note:_ support-arabic resource should be started before your resource.
 
-## Usage
-First of all, in the few following examples I will use this (kind of) shortcut:  
-```lua
-SupAr = exports['support-arabic']
-```  
-So... here is some examples to use the script:  
-- Raw linking & reversing:  
-```lua
-local aFullArabicText = "أهلا بك" -- (hello there)
-AddTextEntry('AR_NOTIFICATION', SupAr:reverse(aFullArabicText)) -- ﻚﺑ ﻼﻫﺃ
-```
-- Raw unlinking & irreversing:  
-```lua
-SendNUIMessage({
-	action = "notify",
-	text = SupAr:irreverseUnlink(GetLabelText('AR_NOTIFICATION')) -- أهلا بك
-})
-```
-- Hybrid linking & reversing:  
-```lua
-local playerName = GetPlayerName(whoever) -- say it's Yaser
-local hybridText = "يريد منازلتك " .. playerName .. "اللاعب الملقب بـ" -- (The player Yaser wants to compete you)
-AddTextEntry('AR_NOTIFICATION', SupAr:escape(hybridText)) -- ـﺑ ﺐﻘﻠﻤﻟﺍ ﺐﻋﻼﻟﺍYaser ﻚﺘﻟﺯﺎﻨﻣ ﺪﻳﺮﻳ
-```
-- Hybrid unlinking & irreversing:  
-```lua
-local escapedHybridText = GetLabelText('AR_NOTIFICATION') -- ـﺑ ﺐﻘﻠﻤﻟﺍ ﺐﻋﻼﻟﺍYaser ﻚﺘﻟﺯﺎﻨﻣ ﺪﻳﺮﻳ
-local parsedHybridText = SupAr:parse(escapedHybridText) -- اللاعب الملقب بـYaser يريد منازلتك
-print(parsedHybridText) -- this is still LTR, you can't use it in UI (HTML) notifications, we'll talk about this
-```
+## Issues
+There is some hanging issues that need to be looked at.
 
-## Finally
-Linking an reversing the characters could easily fix the problem without even changing the text direction of the game, which seems good, but (there is always a but :/) the text direction LTR (left to right) won't function properly in some cases, for example:  
-- Hybrid Text  
-The text direction doesn't affect Arabic it self, the problem starts when it comes to the hybrid.
-First of all, hybrid sentence is a mixture of Arabic and any other language (e.g. English), check this one:  
-<span dir="rtl">`انت في الـServer الخاص بالمجتمع`</span> (You are in the community's Server)  
-seems fine as the text direction is RTL (right to left), let's see what does it looks like when the text direction is LTR (left to right):  
-<span dir="ltr">`انت في الـServer الخاص بالمجتمع`</span>  
-As you can see, the Arabic it self hasn't affected, but the order of the sentences has reversed.  
-This could easily be fixed by typing `سيرفر` instead of `Server` which is taking the English vocal and type the parallel to it in Arabic (it's not accepted linguistically but let's say it is) but (another but :/) there are some cases that you are forced to put a Non-Arabic word in the middle of the text, like the example above, the player name which is rarely written in Arabic.
-That's why there are ``escape``/``parse`` functions at the first place (the ones that deals with hybrid text, you could say a "crack" solution).  
-Those functions reverse the Arabic sentences only, leaving the other languages texts and order as it is.  
-- Word Wrap  
-This is another huge weakness case (unfortunately, unlike the above, there is no "crack" solution).  
+### Word Wrap 
 When ever there is a [word-wrap](https://en.wikipedia.org/wiki/Line_wrap_and_word_wrap), it won't function properly.  
 For example, let's notify the player with this sentence: `مرحبا بك في مجتمعنا، إستمتع بوقتك` (Welcome to our community, enjoy your time)  
 ![Wrap Arabic](https://raw.githubusercontent.com/imperfect-fivem/support-arabic/85096cd1b45bc54d9a190a86cdf4f2bcb8921a65/images/wrap-arabic.png)  
@@ -96,9 +68,13 @@ Seems wrong right? Why is that? Well, word-wrap takes the last word (or two, or 
 Remember that we just reversed the words, means that we made the first to be the last and vice-versa, That's why it takes the first word instead of the last one.  
 The only solution is to find a replacement solution to remove the current "crack" solution, for now... test the sentences and type the line breaks manually, I'll figure something out in the future, lmk if you have any ideas.
 
+### Multiline
+Technically this is a subproblem of [Word Wrap](#word-wrap).  
+Since it LTR text direction system takes the last word, many words will eventually form a whole new line.  
+Which causes the first line to be the last and vice-versa.  
+TODO: provide example.
+
 ## TODO
-- Find a solution for word-wrap & multiline inversion.
-- Update/Clean README & add documentation instead.
 - Make a release with the latest features.
 - Support the [diacritics](https://en.wikipedia.org/wiki/Arabic_diacritics) between `ل` and `ا` to [solve](https://github.com/imperfect-fivem/support-arabic/blob/85096cd1b45bc54d9a190a86cdf4f2bcb8921a65/src/linking.js#L131) cases like [this](https://github.com/imperfect-fivem/support-arabic/blob/85096cd1b45bc54d9a190a86cdf4f2bcb8921a65/examples/test-result.log#L45).
 - Test in [RedM](https://redm.net/).
