@@ -8,11 +8,13 @@ version '1.0.0'
 
 font_face 'Arabic'
 client_script 'src/font.lua'
+
 shared_scripts {
+  'src/utils.js',
+  'src/directing.js',
   'src/linking.js',
   'src/relating.js',
   'src/exporting.js'
 }
 
-server_script 'test/analysis.lua'
-client_script 'test/fivem.lua'
+server_script 'examples/test.lua'

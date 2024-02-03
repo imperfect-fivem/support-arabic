@@ -1,10 +1,42 @@
-With Tags:
+Redirect Arabic beginning with Non-Arabic ending Text:
+(+) right-to-left: احمد العربي: is online
+(~) redirect(right-to-left): is online :احمد العربي
+(-) left-to-right: is online :احمد العربي
+(~) redirect(left-to-right): احمد العربي: is online
+(?) redirect(right-to-left) = left-to-right: true
+(?) redirect(left-to-right) = right-to-left: true 
+
+Redirect Non-Arabic beginning with Arabic ending Text:
+(+) right-to-left: -Ahmad Alarabi =+ متصل الآن
+(~) redirect(right-to-left): متصل الآن += Ahmad Alarabi-
+(-) left-to-right: متصل الآن += Ahmad Alarabi-
+(~) redirect(left-to-right): -Ahmad Alarabi =+ متصل الآن
+(?) redirect(right-to-left) = left-to-right: true
+(?) redirect(left-to-right) = right-to-left: true 
+
+Redirect Arabic beginning and Non-Arabic middle with Arabic ending Text:
+(+) right-to-left: توجه اللاعب: Ahmad Alarabi إلى منطقة Los Santos في الجنوب
+(~) redirect(right-to-left): في الجنوب Los Santos إلى منطقة Ahmad Alarabi :توجه اللاعب
+(-) left-to-right: في الجنوب Los Santos إلى منطقة Ahmad Alarabi :توجه اللاعب
+(~) redirect(left-to-right): توجه اللاعب: Ahmad Alarabi إلى منطقة Los Santos في الجنوب
+(?) redirect(right-to-left) = left-to-right: true
+(?) redirect(left-to-right) = right-to-left: true 
+
+Redirect Non-Arabic beginning and Arabic middle with Non-Arabic ending Text:
+(+) right-to-left: Bill $500 دفعها اللاعب Ahmad Alarabi
+(~) redirect(right-to-left): Ahmad Alarabi دفعها اللاعب Bill $500
+(-) left-to-right: Ahmad Alarabi دفعها اللاعب Bill $500
+(~) redirect(left-to-right): Bill $500 دفعها اللاعب Ahmad Alarabi
+(?) redirect(right-to-left) = left-to-right: true
+(?) redirect(left-to-right) = right-to-left: true 
+
+Escape/Parse With Tags:
 (+) text: تحتاج إلى رزمة من الـCopper لإتمام العملية
 (~) reversed: <FONT FACE="Arabic">ـﻟﺍ ﻦﻣ ﺔﻣﺯﺭ ﻰﻟﺇ ﺝﺎﺘﺤﺗ</FONT>Copper <FONT FACE="Arabic">ﺔﻴﻠﻤﻌﻟﺍ ﻡﺎﻤﺗﻹ</FONT>
 (-) irreversed: تحتاج إلى رزمة من الـCopper لإتمام العملية
 (?) text = irreversed: true 
 
-Without Tags:
+Escape/Parse Without Tags:
 (+) text: تحتاج إلى رزمة من الـCopper لإتمام العملية
 (~) reversed: ـﻟﺍ ﻦﻣ ﺔﻣﺯﺭ ﻰﻟﺇ ﺝﺎﺘﺤﺗCopper ﺔﻴﻠﻤﻌﻟﺍ ﻡﺎﻤﺗﻹ
 (-) irreversed: تحتاج إلى رزمة من الـCopper لإتمام العملية

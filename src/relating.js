@@ -1,12 +1,4 @@
 /**
- * @param {string} string 
- * @returns {string}
- */
-function reverseString(string) {
-    return string.split('').reverse().join('');
-}
-
-/**
  * @param {string} sentence 
  * @returns {string}
  */
@@ -24,32 +16,27 @@ function internalIrreverseUnlink(sentence) {
     return unlinkText(reverseString(sentence));
 }
 
-let fontFace = GetResourceMetadata(GetCurrentResourceName(), 'font_face', 0);
-
-const arabicSentenceRegex = /[\u0600-\u06ff\ufb50-\ufefc(\s?)]+/g;
-
 /**
  * @param {string} input 
  * @param {string?} tags 
+ * @param {string?} font 
  * @returns {string}
  */
-function escapeContent(input, tags = !IsDuplicityVersion()) {
+function escapeContent(input, tags = !IsDuplicityVersion(), font = DEFAULT_FONT_FACE) {
     if (typeof input != 'string') return `${input}`;
     return input.replace(
-        arabicSentenceRegex,
+        ARABIAN_SENTENCE_REGEX,
         function escapingReplacer(content) {
             let originalContent = content; content = content.trim();
             if (content.length == 0) return originalContent;
             let prefix = originalContent.substring(0, originalContent.indexOf(content.charAt(0)));
             let suffix = originalContent.substring(originalContent.lastIndexOf(content.charAt(content.length - 1)) + 1, originalContent.length);
             content = internalReverseLink(content);
-            if (tags) content = `<FONT FACE="${fontFace}">${content}</FONT>`;
+            if (tags) content = `<FONT FACE="${font}">${content}</FONT>`; // TODO: font face as argument
             return prefix + content + suffix;
         }
     );
 }
-
-const taggedArabicSentenceRegex = /<FONT(.*?)>[\u0600-\u06ff\ufb50-\ufefc(\s?)]+<\/FONT>/g;
 
 /**
  * @param {string} input 
@@ -59,12 +46,12 @@ const taggedArabicSentenceRegex = /<FONT(.*?)>[\u0600-\u06ff\ufb50-\ufefc(\s?)]+
 function parseContent(input, tags = !IsDuplicityVersion()) {
     if (typeof input != 'string') return `${input}`;
     return input.replace(
-        tags ? taggedArabicSentenceRegex : arabicSentenceRegex,
+        tags ? TAGGED_ARABIAN_SENTENCE_REGEX : ARABIAN_SENTENCE_REGEX,
         function parsingReplacer(matching) {
             let content, prefix = '', suffix = '';
             if (tags) {
                 content = []; let match;
-                while ((match = arabicSentenceRegex.exec(matching)) != null) content.push(...match.map(m => m.trim()));
+                while ((match = ARABIAN_SENTENCE_REGEX.exec(matching)) != null) content.push(...match.map(m => m.trim()));
                 content = content.join('').trim();
                 if (content.length < 1) return matching;
             } else {
