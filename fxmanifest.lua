@@ -18,4 +18,10 @@ shared_scripts {
 }
 
 server_script 'examples/test.lua'
-client_script 'escaping.lua'
+
+file 'examples/fivem/ui.html'
+ui_page 'examples/fivem/ui.html'
+client_scripts {
+  'escaping.lua',
+  'examples/fivem/client.lua'
+}
