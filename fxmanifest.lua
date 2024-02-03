@@ -18,3 +18,4 @@ shared_scripts {
 }
 
 server_script 'examples/test.lua'
+client_script 'escaping.lua'
