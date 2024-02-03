@@ -97,7 +97,7 @@ Remember that we just reversed the words, means that we made the first to be the
 The only solution is to find a replacement solution to remove the current "crack" solution, for now... test the sentences and type the line breaks manually, I'll figure something out in the future, lmk if you have any ideas.
 
 ## TODO
-- Find a solution to the text direction.
+- Update/Clean README & add documentation instead.
+- Make a release with the latest features.
 - Support the [diacritics](https://en.wikipedia.org/wiki/Arabic_diacritics) between `ل` and `ا` to [solve](https://github.com/imperfect-fivem/support-arabic/blob/85096cd1b45bc54d9a190a86cdf4f2bcb8921a65/src/linking.js#L131) cases like [this](https://github.com/imperfect-fivem/support-arabic/blob/85096cd1b45bc54d9a190a86cdf4f2bcb8921a65/examples/test-result.log#L45).
 - Test in [RedM](https://redm.net/).
-- Add use-case examples.
