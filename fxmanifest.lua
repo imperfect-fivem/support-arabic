@@ -4,7 +4,7 @@ rdr3_warning 'I acknowledge that this is a prerelease build of RedM, and I am aw
 
 author 'm_imperfect'
 description 'Support in-game Arabic entries.'
-version '1.0.0'
+version '1.1.0'
 
 font_face 'Arabic'
 client_script 'src/font.lua'

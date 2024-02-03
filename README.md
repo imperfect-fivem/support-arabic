@@ -76,6 +76,5 @@ Which causes the first line to be the last and vice-versa.
 TODO: provide example.
 
 ## TODO
-- Make a release with the latest features.
 - Support the [diacritics](https://en.wikipedia.org/wiki/Arabic_diacritics) between `ل` and `ا` to [solve](https://github.com/imperfect-fivem/support-arabic/blob/deb0a79fce54a8f784a58cfe24bd1690af10197b/src/linking.js#L131) cases like [this](https://github.com/imperfect-fivem/support-arabic/blob/deb0a79fce54a8f784a58cfe24bd1690af10197b/examples/test-result.log#L45).
 - Test in [RedM](https://redm.net/).
