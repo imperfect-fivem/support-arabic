@@ -18,7 +18,7 @@ function internalIrreverseUnlink(sentence) {
 
 /**
  * @param {string} input 
- * @param {string?} tags 
+ * @param {boolean?} tags 
  * @param {string?} font 
  * @returns {string}
  */
