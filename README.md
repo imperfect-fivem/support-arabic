@@ -9,7 +9,7 @@ In case of Arabic characters "letters", they are simply not supported, when you 
 
 ## Arabic Font
 The "definer" of the Arabic characters which gives them the shape so you can read them.  
-You can use a font in your own (edit the [manifest](https://github.com/imperfect-fivem/support-arabic/blob/c536a401e7de5301f335f67287694f6e6855c7b6/fxmanifest.lua#L9)) but in case you don't have an Arabic one...  
+You can use a font in your own (edit the [manifest](https://github.com/imperfect-fivem/support-arabic/blob/85096cd1b45bc54d9a190a86cdf4f2bcb8921a65/fxmanifest.lua#L9)) but in case you don't have an Arabic one...  
 There is an attached Arabic font in a streamable gfx format, credits: *A9eelsh* (there was no contact info to reach the provider, just found it in a public repository, so... it's probably fine to use it).
 
 ## Just adding the font fixes the problem ?
@@ -24,7 +24,7 @@ For example the character (ب) can be written in three different way depending o
 
 And of course... it's not supported as well, so when you add an Arabic font and then you try to write in it, you will be able to, the characters will be there and you can still read the words, but it's just uncomfortable for the players or any Arabic reader, which is the thing we try to avoid.  
 For example, notice how the sentence "مرحبا بك في مجتمعنا" (Welcome to our community) is written in-game:  
-![Unlinked Arabic](https://raw.githubusercontent.com/imperfect-fivem/support-arabic/c536a401e7de5301f335f67287694f6e6855c7b6/images/unlinked-arabic.png)  
+![Unlinked Arabic](https://raw.githubusercontent.com/imperfect-fivem/support-arabic/85096cd1b45bc54d9a190a86cdf4f2bcb8921a65/images/unlinked-arabic.png)  
 
 ## So... that's it ?
 Well, Arabic language it self wasn't that easy, right? There is another problem that needs to be mentioned. Which is that Arabic text direction is Right To Left aka RTL unlike most other languages that use the Left To Right direction aka LTR.
@@ -33,7 +33,7 @@ For example, to explain the above, try to read this: "e l b a t r o f m o c", it
 
 ## So far, what is the solution ?
 With this script you can link and reverse the Arabic sentences to be readable, Notice the difference between the above and this:  
-![Linked Arabic](https://raw.githubusercontent.com/imperfect-fivem/support-arabic/c536a401e7de5301f335f67287694f6e6855c7b6/images/linked-arabic.png)  
+![Linked Arabic](https://raw.githubusercontent.com/imperfect-fivem/support-arabic/85096cd1b45bc54d9a190a86cdf4f2bcb8921a65/images/linked-arabic.png)  
 _Note:_ it's obvious but anyway, this problem is with [RAGE](https://en.wikipedia.org/wiki/Rockstar_Advanced_Game_Engine) so there no need to use it with UI that involves HTML which supports Arabic.
 
 ## Functionality
@@ -91,13 +91,13 @@ Those functions reverse the Arabic sentences only, leaving the other languages t
 This is another huge weakness case (unfortunately, unlike the above, there is no "crack" solution).  
 When ever there is a [word-wrap](https://en.wikipedia.org/wiki/Line_wrap_and_word_wrap), it won't function properly.  
 For example, let's notify the player with this sentence: `مرحبا بك في مجتمعنا، إستمتع بوقتك` (Welcome to our community, enjoy your time)  
-![Wrap Arabic](https://raw.githubusercontent.com/imperfect-fivem/support-arabic/c536a401e7de5301f335f67287694f6e6855c7b6/images/wrap-arabic.png)  
+![Wrap Arabic](https://raw.githubusercontent.com/imperfect-fivem/support-arabic/85096cd1b45bc54d9a190a86cdf4f2bcb8921a65/images/wrap-arabic.png)  
 Seems wrong right? Why is that? Well, word-wrap takes the last word (or two, or what suits the length) and put them in the start of the next line.  
 Remember that we just reversed the words, means that we made the first to be the last and vice-versa, That's why it takes the first word instead of the last one.  
 The only solution is to find a replacement solution to remove the current "crack" solution, for now... test the sentences and type the line breaks manually, I'll figure something out in the future, lmk if you have any ideas.
 
 ## TODO
 - Find a solution to the text direction.
-- Support the [diacritics](https://en.wikipedia.org/wiki/Arabic_diacritics) between `ل` and `ا` to [solve](https://github.com/imperfect-fivem/support-arabic/blob/c536a401e7de5301f335f67287694f6e6855c7b6/src/linking.js#L131) cases like [this](https://github.com/imperfect-fivem/support-arabic/blob/c536a401e7de5301f335f67287694f6e6855c7b6/test/analysis-result.log#L13).
+- Support the [diacritics](https://en.wikipedia.org/wiki/Arabic_diacritics) between `ل` and `ا` to [solve](https://github.com/imperfect-fivem/support-arabic/blob/85096cd1b45bc54d9a190a86cdf4f2bcb8921a65/src/linking.js#L131) cases like [this](https://github.com/imperfect-fivem/support-arabic/blob/85096cd1b45bc54d9a190a86cdf4f2bcb8921a65/examples/test-result.log#L45).
 - Test in [RedM](https://redm.net/).
 - Add use-case examples.
