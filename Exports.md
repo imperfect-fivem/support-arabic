@@ -41,7 +41,7 @@ SendNUIMessage({
 ```
 
 ## [`SupportArabic:escape`](https://github.com/imperfect-fivem/support-arabic/blob/65024cfcb705b68d311dd85c74ac71d6e48ce376/src/relating.js#L25)
-Linking & reversing a [hybrid string](https://github.com/imperfect-fivem/support-arabic/blob/deb0a79fce54a8f784a58cfe24bd1690af10197b/README.md#does-that-work-in-all-cases-) (only link & reverse Arabic).  
+Linking & reversing a [hybrid string](https://github.com/imperfect-fivem/support-arabic/blob/c0b16a597819a487f9bb9610964716d9e0508ae3/README.md#does-that-work-in-all-cases-) (only link & reverse Arabic).  
 This function assumes that the input string is [redirected](#supportarabicredirect).
 ### I/O
 - `input`: string.
@@ -56,7 +56,7 @@ AddTextEntry('AR_NOTIFICATION', SupAr:escape(hybridText)) -- ـﺑ ﺐﻘﻠﻤ�
 ```
 
 ## [`SupportArabic:parse`](https://github.com/imperfect-fivem/support-arabic/blob/65024cfcb705b68d311dd85c74ac71d6e48ce376/src/relating.js#L46)
-Unlinking & irreversing a [hybrid string](https://github.com/imperfect-fivem/support-arabic/blob/deb0a79fce54a8f784a58cfe24bd1690af10197b/README.md#does-that-work-in-all-cases-) (only unlink & irreverse Arabic).  
+Unlinking & irreversing a [hybrid string](https://github.com/imperfect-fivem/support-arabic/blob/c0b16a597819a487f9bb9610964716d9e0508ae3/README.md#does-that-work-in-all-cases-) (only unlink & irreverse Arabic).  
 This function assumes that the input string is [redirected](#supportarabicredirect).
 ### I/O
 - `input`: string`.
